@@ -39,3 +39,11 @@ extension MainQueueDispatchDecorator: PokemonDetailLoader where T == PokemonDeta
         }
     }
 }
+
+extension MainQueueDispatchDecorator: ImageDataLoader where T == ImageDataLoader {
+    func load(from imageURL: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
+        return decoratee.load(from: imageURL) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}

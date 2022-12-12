@@ -27,8 +27,22 @@ final class PokemonDetailUIIntergrationTests: XCTestCase {
         
         sut.loadViewIfNeeded()
         loader.loadCompletes(with: .success(pokemonDetail))
+        loader.completeImageLoading()
         
         assertThat(sut, hasViewConfiguredFor: pokemonDetail)
+    }
+    
+    func test_renders_image_from_remote() {
+        let (sut, loader) = makeSUT(url: anyURL())
+        let detail = makeDetail()
+        let imageData = makeImageData()
+        
+        sut.loadViewIfNeeded()
+        loader.loadCompletes(with: .success(detail))
+        XCTAssertEqual(sut.renderedImage, .none)
+        
+        loader.completeImageLoading(with: imageData)
+        XCTAssertEqual(sut.renderedImage, imageData)
     }
 }
 
@@ -36,7 +50,8 @@ private extension PokemonDetailUIIntergrationTests {
     func makeSUT(url: URL, file: StaticString = #file, line: UInt = #line) -> (PokemonDetailViewController, LoaderSpy) {
         let loader = LoaderSpy()
         let sut = PokemonDetailUIComposer.pokemonDetailComposedWith(url: url,
-                                                                    pokemonDetailLoader: loader)
+                                                                    pokemonDetailLoader: loader,
+                                                                    imageLoader: loader)
         
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
@@ -44,7 +59,7 @@ private extension PokemonDetailUIIntergrationTests {
         return (sut, loader)
     }
     
-    class LoaderSpy: PokemonDetailLoader {
+    class LoaderSpy: PokemonDetailLoader, ImageDataLoader {
         
         enum Message: Equatable {
             case load(URL)
@@ -62,6 +77,35 @@ private extension PokemonDetailUIIntergrationTests {
         
         func loadCompletes(with result: Result, at index: Int = 0) {
             loadCompletions[index](result)
+        }
+        
+        private struct TaskSpy: ImageDataLoaderTask {
+            let cancelCallback: () -> Void
+            func cancel() {
+                cancelCallback()
+            }
+        }
+        
+        private var imageRequests = [(url: URL, completion: (ImageDataLoader.Result) -> Void)]()
+        
+        var loadedImageURLs: [URL] {
+            return imageRequests.map { $0.url }
+        }
+        
+        private(set) var cancelledImageURLs = [URL]()
+        
+        func load(from url: URL, completion: @escaping (ImageDataLoader.Result) -> Void) -> ImageDataLoaderTask {
+            imageRequests.append((url, completion))
+            return TaskSpy { [weak self] in self?.cancelledImageURLs.append(url) }
+        }
+        
+        func completeImageLoading(with imageData: Data = Data(), at index: Int = 0) {
+            imageRequests[index].completion(.success(imageData))
+        }
+        
+        func completeImageLoadingWithError(at index: Int = 0) {
+            let error = NSError(domain: "an error", code: 0)
+            imageRequests[index].completion(.failure(error))
         }
     }
     
@@ -85,7 +129,29 @@ private extension PokemonDetailUIIntergrationTests {
         XCTAssertEqual(sut.heightText, String(item.height), file: file, line: line)
         XCTAssertEqual(sut.weightText, String(item.weight), file: file, line: line)
     }
+    
+    func makeImageData(withColor color: UIColor = .systemTeal) -> Data {
+        return makeImage(withColor: color).pngData()!
+    }
+    
+    func makeImage(withColor color: UIColor = .systemTeal) -> UIImage {
+        return UIImage.make(withColor: color)
+    }
 }
+
+private extension UIImage {
+    static func make(withColor color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()!
+        context.setFillColor(color.cgColor)
+        context.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+    }
+}
+
 
 extension PokemonDetailViewController {
     
@@ -99,6 +165,10 @@ extension PokemonDetailViewController {
     
     var weightText: String? {
         return weightLabel.text
+    }
+    
+    var renderedImage: Data? {
+        return imageView.image?.pngData()
     }
 }
 
