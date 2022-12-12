@@ -10,7 +10,7 @@ import Foundation
 public protocol PokemonDetailView {
     associatedtype Image
     
-    func display(_ mode: PokemonDetailViewModel<Image>)
+    func display(_ model: PokemonDetailViewModel<Image>)
 }
 
 public final class PokemonDetailViewPresenter<View: PokemonDetailView, Image> where View.Image == Image {
@@ -32,10 +32,10 @@ public final class PokemonDetailViewPresenter<View: PokemonDetailView, Image> wh
     
     public func didStarLoadingImageData(for model: PokemonDetail) {
         view.display(PokemonDetailViewModel(
-            id: model.id,
+            id: String(model.id),
             image: nil,
-            height: model.height,
-            weight: model.weight,
+            height: String(model.height),
+            weight: String(model.weight),
             types: model.properties.map { $0.name },
             isLoading: true,
             errorMessage: nil)
@@ -50,10 +50,10 @@ public final class PokemonDetailViewPresenter<View: PokemonDetailView, Image> wh
         }
 
         view.display(PokemonDetailViewModel(
-            id: model.id,
+            id: String(model.id),
             image: image,
-            height: model.height,
-            weight: model.weight,
+            height: String(model.height),
+            weight: String(model.weight),
             types: model.properties.map { $0.name },
             isLoading: false,
             errorMessage: nil)
@@ -62,10 +62,10 @@ public final class PokemonDetailViewPresenter<View: PokemonDetailView, Image> wh
 
     public func didFinishLoadingImageData(with error: Error, for model: PokemonDetail) {
         view.display(PokemonDetailViewModel(
-            id: model.id,
+            id: String(model.id),
             image: nil,
-            height: model.height,
-            weight: model.weight,
+            height: String(model.height),
+            weight: String(model.weight),
             types: model.properties.map { $0.name },
             isLoading: false,
             errorMessage: nil)

@@ -31,3 +31,11 @@ extension MainQueueDispatchDecorator: PokemonLoader where T == PokemonLoader {
         }
     }
 }
+
+extension MainQueueDispatchDecorator: PokemonDetailLoader where T == PokemonDetailLoader {
+    func load(url: URL, completion: @escaping (PokemonDetailLoader.Result) -> Void) {
+        decoratee.load(url: url) { [weak self] result in
+            self?.dispatch { completion(result) }
+        }
+    }
+}

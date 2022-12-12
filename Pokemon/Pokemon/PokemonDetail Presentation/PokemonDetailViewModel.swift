@@ -8,16 +8,21 @@
 import Foundation
 
 public struct PokemonDetailViewModel<Image> {
-    public let id: Int?
+    public let id: String?
     public let image: Image?
-    public let height: Int?
-    public let weight: Int?
+    public let height: String?
+    public let weight: String?
     public let types: [String]?
+    
+    public var properties: String? {
+        guard let types = types else { return "" }
+        return types.joined(separator: ",")
+    }
     
     public let isLoading: Bool
     public let errorMessage: String?
     
-    public init(id: Int?, image: Image?, height: Int?, weight: Int?, types: [String]?, isLoading: Bool, errorMessage: String?) {
+    public init(id: String?, image: Image?, height: String?, weight: String?, types: [String]?, isLoading: Bool, errorMessage: String?) {
         self.id = id
         self.image = image
         self.height = height

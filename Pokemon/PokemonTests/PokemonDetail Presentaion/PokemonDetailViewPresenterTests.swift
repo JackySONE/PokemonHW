@@ -61,9 +61,9 @@ class PokemonDetailViewPresenterTests: XCTestCase {
         XCTAssertEqual(view.messages.count, 1)
         
         XCTAssertEqual(message?.isLoading, false)
-        XCTAssertEqual(message?.id, pokemonDetail.id)
-        XCTAssertEqual(message?.height, pokemonDetail.height)
-        XCTAssertEqual(message?.weight, pokemonDetail.weight)
+        XCTAssertEqual(message?.id, String(pokemonDetail.id))
+        XCTAssertEqual(message?.height, String(pokemonDetail.height))
+        XCTAssertEqual(message?.weight, String(pokemonDetail.weight))
         if let types = message?.types {
             types.enumerated().forEach { index, name in
                 XCTAssertEqual(name, pokemonDetail.properties[index].name)
@@ -84,9 +84,9 @@ class PokemonDetailViewPresenterTests: XCTestCase {
         XCTAssertEqual(view.messages.count, 1)
         
         XCTAssertEqual(message?.isLoading, false)
-        XCTAssertEqual(message?.id, pokemonDetail.id)
-        XCTAssertEqual(message?.height, pokemonDetail.height)
-        XCTAssertEqual(message?.weight, pokemonDetail.weight)
+        XCTAssertEqual(message?.id, String(pokemonDetail.id))
+        XCTAssertEqual(message?.height, String(pokemonDetail.height))
+        XCTAssertEqual(message?.weight, String(pokemonDetail.weight))
         if let types = message?.types {
             types.enumerated().forEach { index, name in
                 XCTAssertEqual(name, pokemonDetail.properties[index].name)

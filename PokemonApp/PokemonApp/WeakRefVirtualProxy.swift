@@ -5,6 +5,7 @@
 //  Created by 賴彥宇 on 2022/12/12.
 //
 
+import UIKit
 import Pokemon
 
 final class WeakRefVirtualProxy<T: AnyObject> {
@@ -30,5 +31,12 @@ extension WeakRefVirtualProxy: PokemonLoadingView where T: PokemonLoadingView {
 extension WeakRefVirtualProxy: PokemonListErrorView where T: PokemonListErrorView {
     func display(_ viewModel: PokemonListErrorViewModel) {
         object?.display(viewModel)
+    }
+}
+
+extension WeakRefVirtualProxy: PokemonDetailView where T: PokemonDetailView, T.Image == UIImage {
+    func display(_ model: PokemonDetailViewModel<UIImage>) {
+        object?.display(model)
+
     }
 }

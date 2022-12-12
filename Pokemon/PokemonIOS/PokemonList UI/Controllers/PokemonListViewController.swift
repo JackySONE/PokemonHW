@@ -9,7 +9,7 @@ import UIKit
 import Pokemon
 
 public protocol PokemonListViewControllerDelegate {
-    func didRequestPokemon ()
+    func didRequestPokemon()
 }
 
 public final class PokemonListViewController: UITableViewController, UITableViewDataSourcePrefetching, PokemonLoadingView, PokemonListErrorView {
