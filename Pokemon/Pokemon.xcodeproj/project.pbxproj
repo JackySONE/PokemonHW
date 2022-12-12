@@ -160,6 +160,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9BA7A4E82946D915002BCCBC /* Shared API Infra */ = {
+			isa = PBXGroup;
+			children = (
+				9BC1349C294611C000FE935E /* URLSessionHTTPClient.swift */,
+			);
+			path = "Shared API Infra";
+			sourceTree = "<group>";
+		};
 		9BC1344F2945D37E00FE935E = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +196,7 @@
 			children = (
 				9BC1347A2945F85900FE935E /* Shared API */,
 				9BC134752945ECF500FE935E /* Pokemon Feature */,
-				9BC1349C294611C000FE935E /* URLSessionHTTPClient.swift */,
+				9BA7A4E82946D915002BCCBC /* Shared API Infra */,
 				9BC134C42946746700FE935E /* Pokemon Presentaion */,
 			);
 			path = Pokemon;
