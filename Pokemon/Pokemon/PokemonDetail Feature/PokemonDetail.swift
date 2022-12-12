@@ -12,13 +12,17 @@ public struct PokemonDetail: Hashable {
     public let imageURL: URL
     public let height: Int
     public let weight: Int
-    public let properties: [Poperties]
+    public let properties: [Properties]
 
-    public struct Poperties: Hashable {
+    public struct Properties: Hashable {
         public let name: String
+        
+        public init(name: String) {
+            self.name = name
+        }
     }
     
-    public init(id: Int, imageURL: URL, height: Int, weight: Int, properties: [PokemonDetail.Poperties]) {
+    public init(id: Int, imageURL: URL, height: Int, weight: Int, properties: [PokemonDetail.Properties]) {
         self.id = id
         self.imageURL = imageURL
         self.height = height

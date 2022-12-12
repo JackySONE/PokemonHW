@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol PokemonDetailLoader {
-    typealias Result = Swift.Result<[PokemonDetail], Error>
+    typealias Result = Swift.Result<PokemonDetail, Error>
     
     func load(url: URL, completion: @escaping (Result) -> Void)
 }
