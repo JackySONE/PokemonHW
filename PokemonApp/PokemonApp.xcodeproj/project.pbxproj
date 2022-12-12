@@ -22,6 +22,7 @@
 		9BA7A4F62946DD26002BCCBC /* PokemonListUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7A4F02946DD26002BCCBC /* PokemonListUIComposer.swift */; };
 		9BA7A4F72946DD26002BCCBC /* WeakRefVirtualProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7A4F22946DD26002BCCBC /* WeakRefVirtualProxy.swift */; };
 		9BA7A4F82946DD26002BCCBC /* PokemonListViewAdaptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7A4EF2946DD26002BCCBC /* PokemonListViewAdaptor.swift */; };
+		9BA7A4FA2946DE92002BCCBC /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7A4F92946DE92002BCCBC /* MainQueueDispatchDecorator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		9BA7A4F12946DD26002BCCBC /* PokemonLoaderPresentationAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonLoaderPresentationAdaptor.swift; sourceTree = "<group>"; };
 		9BA7A4F22946DD26002BCCBC /* WeakRefVirtualProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakRefVirtualProxy.swift; sourceTree = "<group>"; };
 		9BA7A4F32946DD26002BCCBC /* PokemonPresentationAdaptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonPresentationAdaptor.swift; sourceTree = "<group>"; };
+		9BA7A4F92946DE92002BCCBC /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				9BA7A4F32946DD26002BCCBC /* PokemonPresentationAdaptor.swift */,
 				9BA7A4EF2946DD26002BCCBC /* PokemonListViewAdaptor.swift */,
 				9BA7A4F02946DD26002BCCBC /* PokemonListUIComposer.swift */,
+				9BA7A4F92946DE92002BCCBC /* MainQueueDispatchDecorator.swift */,
 				9BA7A4F22946DD26002BCCBC /* WeakRefVirtualProxy.swift */,
 				9BA7A4B42946D380002BCCBC /* ViewController.swift */,
 				9BA7A4B62946D380002BCCBC /* Main.storyboard */,
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BA7A4B52946D380002BCCBC /* ViewController.swift in Sources */,
+				9BA7A4FA2946DE92002BCCBC /* MainQueueDispatchDecorator.swift in Sources */,
 				9BA7A4F52946DD26002BCCBC /* PokemonLoaderPresentationAdaptor.swift in Sources */,
 				9BA7A4F82946DD26002BCCBC /* PokemonListViewAdaptor.swift in Sources */,
 				9BA7A4B12946D380002BCCBC /* AppDelegate.swift in Sources */,
