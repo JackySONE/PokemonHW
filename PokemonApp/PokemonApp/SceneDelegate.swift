@@ -10,22 +10,29 @@ import Pokemon
 import PokemonIOS
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
+    
+    private lazy var baseURL = URL(string: "https://pokeapi.co/api/v2/pokemon")!
+    
+    private lazy var httpClient: HTTPClient = {
+        URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+    }()
+    
+    private lazy var navigationController: UINavigationController = {
+        let pokemonLoader = RemotePokemonLoader(url: baseURL, client: httpClient)
+        return UINavigationController(rootViewController: PokemonListUIComposer.pokemonListComposedWith(pokemonLoader: pokemonLoader))
+    }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon")!
-        
-        let session = URLSession(configuration: .ephemeral)
-        let client = URLSessionHTTPClient(session: session)
-        let pokemonLoader = RemotePokemonLoader(url: url, client: client)
-        
-        let pokemonListViewController = PokemonListUIComposer.pokemonListComposedWith(pokemonLoader: pokemonLoader)
-        
-        window?.rootViewController = pokemonListViewController
+        configureWindow()
     }
-
+    
+    private func configureWindow() {
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
 }
 
