@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B09779129470481006F3D76 /* PokemonListUIIntergrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09779029470481006F3D76 /* PokemonListUIIntergrationTests.swift */; };
+		9B09779629470572006F3D76 /* UIView+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09779329470494006F3D76 /* UIView+TestHelpers.swift */; };
+		9B09779729470575006F3D76 /* PokemonListViewController+Assertions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09779229470494006F3D76 /* PokemonListViewController+Assertions.swift */; };
+		9B097799294705D8006F3D76 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B097798294705D8006F3D76 /* XCTestCase+MemoryLeakTracking.swift */; };
 		9BA7A4B12946D380002BCCBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7A4B02946D380002BCCBC /* AppDelegate.swift */; };
 		9BA7A4B32946D380002BCCBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7A4B22946D380002BCCBC /* SceneDelegate.swift */; };
 		9BA7A4B52946D380002BCCBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA7A4B42946D380002BCCBC /* ViewController.swift */; };
@@ -51,6 +55,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9B09779029470481006F3D76 /* PokemonListUIIntergrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonListUIIntergrationTests.swift; sourceTree = "<group>"; };
+		9B09779229470494006F3D76 /* PokemonListViewController+Assertions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PokemonListViewController+Assertions.swift"; sourceTree = "<group>"; };
+		9B09779329470494006F3D76 /* UIView+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+TestHelpers.swift"; sourceTree = "<group>"; };
+		9B097798294705D8006F3D76 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		9BA7A4AD2946D380002BCCBC /* PokemonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BA7A4B02946D380002BCCBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BA7A4B22946D380002BCCBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +98,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B09779429470494006F3D76 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9B097798294705D8006F3D76 /* XCTestCase+MemoryLeakTracking.swift */,
+				9B09779229470494006F3D76 /* PokemonListViewController+Assertions.swift */,
+				9B09779329470494006F3D76 /* UIView+TestHelpers.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9BA7A4A42946D380002BCCBC = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +150,8 @@
 		9BA7A4C62946D381002BCCBC /* PokemonAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				9B09779429470494006F3D76 /* Helpers */,
+				9B09779029470481006F3D76 /* PokemonListUIIntergrationTests.swift */,
 			);
 			path = PokemonAppTests;
 			sourceTree = "<group>";
@@ -263,6 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B09779729470575006F3D76 /* PokemonListViewController+Assertions.swift in Sources */,
+				9B097799294705D8006F3D76 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				9B09779629470572006F3D76 /* UIView+TestHelpers.swift in Sources */,
+				9B09779129470481006F3D76 /* PokemonListUIIntergrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

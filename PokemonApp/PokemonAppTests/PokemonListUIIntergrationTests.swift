@@ -9,6 +9,7 @@ import XCTest
 import UIKit
 import Pokemon
 import PokemonIOS
+import PokemonApp
 
 final class PokemonListUIIntergrationTests: XCTestCase {
     
