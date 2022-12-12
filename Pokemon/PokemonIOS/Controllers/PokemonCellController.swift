@@ -8,15 +8,15 @@
 import UIKit
 import Pokemon
 
-protocol PokemonCellControllerDelegate {
+public protocol PokemonCellControllerDelegate {
     func display()
 }
 
-final class PokemonCellController: PokemonView {
-    private let delegate: PokemonCellControllerDelegate
+public final class PokemonCellController: PokemonView {
+    public let delegate: PokemonCellControllerDelegate
     private var cell: PokemonCell?
     
-    init(delegate: PokemonCellControllerDelegate) {
+    public init(delegate: PokemonCellControllerDelegate) {
         self.delegate = delegate
     }
     
@@ -34,7 +34,7 @@ final class PokemonCellController: PokemonView {
         releaseCellForReuse()
     }
     
-    func display(_ model: PokemonViewModel) {
+    public func display(_ model: PokemonViewModel) {
         cell?.nameLabel.text = model.name
     }
     

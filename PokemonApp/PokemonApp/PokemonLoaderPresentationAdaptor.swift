@@ -6,6 +6,7 @@
 //
 
 import Pokemon
+import PokemonIOS
 
 final class PokemonLoaderPresentationAdaptor: PokemonListViewControllerDelegate {
     private let pokemonLoader: PokemonLoader

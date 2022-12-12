@@ -7,6 +7,7 @@
 
 import UIKit
 import Pokemon
+import PokemonIOS
 
 public final class PokemonListUIComposer {
     private init() {}

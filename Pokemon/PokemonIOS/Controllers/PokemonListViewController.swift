@@ -8,15 +8,15 @@
 import UIKit
 import Pokemon
 
-protocol PokemonListViewControllerDelegate {
+public protocol PokemonListViewControllerDelegate {
     func didRequestPokemon ()
 }
 
 public final class PokemonListViewController: UITableViewController, UITableViewDataSourcePrefetching, PokemonLoadingView, PokemonListErrorView {
-    var delegate: PokemonListViewControllerDelegate?
+    public var delegate: PokemonListViewControllerDelegate?
     @IBOutlet private(set) public var errorView: ErrorView?
     
-    var tableModel = [PokemonCellController]() {
+    public var tableModel = [PokemonCellController]() {
         didSet { tableView.reloadData() }
     }
 

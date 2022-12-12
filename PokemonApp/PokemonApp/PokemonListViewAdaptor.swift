@@ -7,6 +7,7 @@
 
 import UIKit
 import Pokemon
+import PokemonIOS
 
 final class PokemonListViewAdaptor: PokemonListView {
     private weak var controller: PokemonListViewController?

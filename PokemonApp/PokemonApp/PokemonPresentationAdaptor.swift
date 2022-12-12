@@ -6,6 +6,7 @@
 //
 
 import Pokemon
+import PokemonIOS
 
 final class PokemonPresentationAdaptor: PokemonCellControllerDelegate {
     private let model: Pokemon
