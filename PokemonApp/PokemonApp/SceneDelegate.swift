@@ -40,7 +40,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showPokemonDetail(for detailURL: URL) {
-        
+        let detailLoader = RemotePokemonDetailLoader(client: httpClient)
+        let imageDataLoader = RemoteImageDataLoader(client: httpClient)
+        let pokemonDetailVC = PokemonDetailUIComposer.pokemonDetailComposedWith(
+            url: detailURL,
+            pokemonDetailLoader: detailLoader, imageLoader: imageDataLoader)
+        navigationController.pushViewController(pokemonDetailVC, animated: true)
     }
 }
 
