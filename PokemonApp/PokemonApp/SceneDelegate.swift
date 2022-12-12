@@ -21,7 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private lazy var navigationController: UINavigationController = {
         let pokemonLoader = RemotePokemonLoader(url: baseURL, client: httpClient)
-        return UINavigationController(rootViewController: PokemonListUIComposer.pokemonListComposedWith(pokemonLoader: pokemonLoader))
+        return UINavigationController(
+            rootViewController: PokemonListUIComposer.pokemonListComposedWith(
+                pokemonLoader: pokemonLoader,
+            onSelected: showPokemonDetail)
+        )
     }()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -33,6 +37,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func configureWindow() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+    
+    private func showPokemonDetail(for detailURL: URL) {
+        
     }
 }
 

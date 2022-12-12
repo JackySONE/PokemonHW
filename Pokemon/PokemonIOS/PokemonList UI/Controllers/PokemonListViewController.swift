@@ -50,6 +50,10 @@ public final class PokemonListViewController: UITableViewController, UITableView
         return cellController(forRowAt: indexPath).view(in: tableView)
     }
     
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        cellController(forRowAt: indexPath).select()
+    }
+    
     private func cellController(forRowAt indexPath: IndexPath) -> PokemonCellController {
         return tableModel[indexPath.row]
     }

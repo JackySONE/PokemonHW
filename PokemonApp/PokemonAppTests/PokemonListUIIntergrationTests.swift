@@ -72,11 +72,11 @@ final class PokemonListUIIntergrationTests: XCTestCase {
     func test_loadListCompletion_doesNotAlterCurrentRenderingStateOnError() {
         let pokemon1 = makePokemon(name: "a pokemon")
         let (sut, loader) = makeSUT()
-
+        
         sut.loadViewIfNeeded()
         loader.completePokemonLoading(with: [pokemon1], at: 0)
         assertThat(sut, isRendering: [pokemon1])
-
+        
         sut.simulateUserInitiatedPokemonReload()
         loader.completePokemonLoadingWithError(at: 1)
         assertThat(sut, isRendering: [pokemon1])
@@ -85,7 +85,7 @@ final class PokemonListUIIntergrationTests: XCTestCase {
     func test_loadListCompletion_dispatchesFromBackgroundToMainThread() {
         let (sut, loader) = makeSUT()
         sut.loadViewIfNeeded()
-
+        
         let exp = expectation(description: "Wait for background queue")
         DispatchQueue.global().async {
             loader.completePokemonLoading(at: 0)
@@ -96,35 +96,47 @@ final class PokemonListUIIntergrationTests: XCTestCase {
     
     func test_errorView_rendersErrorMessageOnErrorUntilNextReload() {
         let (sut, loader) = makeSUT()
-
+        
         sut.loadViewIfNeeded()
-
+        
         loader.completePokemonLoadingWithError(at: 0)
         XCTAssertEqual(sut.errorMessage, "Error message displayed when we can't load the pokemon list from the server")
-
+        
         sut.simulateUserInitiatedPokemonReload()
         XCTAssertEqual(sut.errorMessage, nil)
     }
     
     func test_errorView_hideErrorMessageOnTap() {
         let (sut, loader) = makeSUT()
-
+        
         sut.loadViewIfNeeded()
-
+        
         XCTAssertEqual(sut.errorMessage, nil)
-
+        
         loader.completePokemonLoadingWithError(at: 0)
         XCTAssertEqual(sut.errorMessage, "Error message displayed when we can't load the pokemon list from the server")
-
+        
         sut.simulateTapOnErrorMessage()
         XCTAssertEqual(sut.errorMessage, nil)
     }
     
+    func test_on_select_pokemon() {
+        var output: URL? = nil
+        let (sut, loader) = makeSUT(onSelectSpy: { output = $0 })
+        let pokemon = makePokemon(name: "A pokemon", url: anyURL())
+        
+        sut.loadViewIfNeeded()
+        loader.completePokemonLoading(with: [pokemon], at: 0)
+        
+        sut.simulateSelectItem(at: 0)
+        
+        XCTAssertEqual(output, pokemon.url)
+    }
     // MARK: - Helpers
     
-    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: PokemonListViewController, loader: LoaderSpy) {
+    private func makeSUT(onSelectSpy: @escaping (URL) -> Void = { _ in }, file: StaticString = #file, line: UInt = #line) -> (sut: PokemonListViewController, loader: LoaderSpy) {
         let loader = LoaderSpy()
-        let sut = PokemonListUIComposer.pokemonListComposedWith(pokemonLoader: loader)
+        let sut = PokemonListUIComposer.pokemonListComposedWith(pokemonLoader: loader, onSelected: onSelectSpy)
         trackForMemoryLeaks(loader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
@@ -174,23 +186,29 @@ extension PokemonListViewController {
     var errorMessage: String? {
         return errorView?.message
     }
-
+    
     var isShowingLoadingIndicator: Bool {
         return refreshControl?.isRefreshing == true
     }
-
+    
     func numberOfRenderedPokmonViews() -> Int {
         return tableView.numberOfRows(inSection: pokemonSection)
     }
-
+    
     func pokemonView(at row: Int) -> UITableViewCell? {
         let ds = tableView.dataSource
         let index = IndexPath(row: row, section: pokemonSection)
         return ds?.tableView(tableView, cellForRowAt: index)
     }
-
+    
     private var pokemonSection: Int {
         return 0
+    }
+    
+    func simulateSelectItem(at index: Int) {
+        let delegate = tableView.delegate
+        let indexPath = IndexPath(item: index, section: 0)
+        delegate?.tableView?(tableView, didSelectRowAt: indexPath)
     }
 }
 

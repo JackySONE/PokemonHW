@@ -12,14 +12,14 @@ import PokemonIOS
 public final class PokemonListUIComposer {
     private init() {}
     
-    public static func pokemonListComposedWith(pokemonLoader: PokemonLoader) -> PokemonListViewController {
+    public static func pokemonListComposedWith(pokemonLoader: PokemonLoader, onSelected: @escaping (URL) -> Void = { _ in }) -> PokemonListViewController {
         let presentationAdpter = PokemonLoaderPresentationAdaptor(pokemonLoader: MainQueueDispatchDecorator(decoratee: pokemonLoader))
         
         let pokemonListViewController = makePokemonListViewController(delegate: presentationAdpter,
                                                                       title: PokemonListPresenter.title)
         
         presentationAdpter.presenter = PokemonListPresenter(
-            pokemonListView: PokemonListViewAdaptor(controller: pokemonListViewController),
+            pokemonListView: PokemonListViewAdaptor(controller: pokemonListViewController, onSelected: onSelected),
             loadingView: WeakRefVirtualProxy(pokemonListViewController),
             errorView: WeakRefVirtualProxy(pokemonListViewController))
         

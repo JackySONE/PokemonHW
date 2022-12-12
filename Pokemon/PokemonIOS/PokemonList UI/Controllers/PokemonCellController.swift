@@ -15,6 +15,8 @@ public protocol PokemonCellControllerDelegate {
 public final class PokemonCellController: PokemonView {
     public let delegate: PokemonCellControllerDelegate
     private var cell: PokemonCell?
+
+    public var didSelect: (() -> Void)?
     
     public init(delegate: PokemonCellControllerDelegate) {
         self.delegate = delegate
@@ -32,6 +34,10 @@ public final class PokemonCellController: PokemonView {
     
     func cancelLoad() {
         releaseCellForReuse()
+    }
+    
+    func select() {
+        didSelect?()
     }
     
     public func display(_ model: PokemonViewModel) {

@@ -19,6 +19,7 @@ public final class PokemonPresenter {
     }
     
     public func display(with model: Pokemon) {
-        pokemonView.display(PokemonViewModel(name: model.name))
+        pokemonView.display(PokemonViewModel(name: model.name,
+                                             url: model.url))
     }
 }
