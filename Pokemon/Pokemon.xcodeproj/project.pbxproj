@@ -185,6 +185,15 @@
 			path = "PokemonDetail Presentaion";
 			sourceTree = "<group>";
 		};
+		9B0977A2294720EB006F3D76 /* PokemonList UI */ = {
+			isa = PBXGroup;
+			children = (
+				9BC134CA29467BBD00FE935E /* Views */,
+				9BC7A2ED29467C3000292336 /* Controllers */,
+			);
+			path = "PokemonList UI";
+			sourceTree = "<group>";
+		};
 		9BA7A4E82946D915002BCCBC /* Shared API Infra */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,8 +335,7 @@
 		9BC134AC29466B4300FE935E /* PokemonIOS */ = {
 			isa = PBXGroup;
 			children = (
-				9BC134CA29467BBD00FE935E /* Views */,
-				9BC7A2ED29467C3000292336 /* Controllers */,
+				9B0977A2294720EB006F3D76 /* PokemonList UI */,
 			);
 			path = PokemonIOS;
 			sourceTree = "<group>";
