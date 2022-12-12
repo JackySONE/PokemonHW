@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9BC134AA29466B4200FE935E"
-               BuildableName = "PokemonIOS.framework"
-               BlueprintName = "PokemonIOS"
+               BuildableName = "PokemoniOS.framework"
+               BlueprintName = "PokemoniOS"
                ReferencedContainer = "container:Pokemon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9BC134AA29466B4200FE935E"
-            BuildableName = "PokemonIOS.framework"
-            BlueprintName = "PokemonIOS"
+            BuildableName = "PokemoniOS.framework"
+            BlueprintName = "PokemoniOS"
             ReferencedContainer = "container:Pokemon.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
@@ -46,8 +46,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9BC134B129466B4300FE935E"
-               BuildableName = "PokemonIOSTests.xctest"
-               BlueprintName = "PokemonIOSTests"
+               BuildableName = "PokemoniOSTests.xctest"
+               BlueprintName = "PokemoniOSTests"
                ReferencedContainer = "container:Pokemon.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -74,8 +74,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9BC134AA29466B4200FE935E"
-            BuildableName = "PokemonIOS.framework"
-            BlueprintName = "PokemonIOS"
+            BuildableName = "PokemoniOS.framework"
+            BlueprintName = "PokemoniOS"
             ReferencedContainer = "container:Pokemon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
