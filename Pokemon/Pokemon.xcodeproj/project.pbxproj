@@ -221,8 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				9BC1347A2945F85900FE935E /* Shared API */,
-				9BC134752945ECF500FE935E /* Pokemon Feature */,
 				9BA7A4E82946D915002BCCBC /* Shared API Infra */,
+				9BC134752945ECF500FE935E /* Pokemon Feature */,
 				9BC134C42946746700FE935E /* Pokemon Presentaion */,
 				9BA7A4FD2946EF13002BCCBC /* PokemonDetail Feature */,
 				9BA7A5022946F008002BCCBC /* PokemonDetail API */,
@@ -234,8 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				9BC134782945F55200FE935E /* Hepler */,
-				9BC1349A2946115C00FE935E /* Pokenmon API */,
 				9BC134A22946130C00FE935E /* Shared API Infra */,
+				9BC1349A2946115C00FE935E /* Pokemon API */,
 				9BC134C72946768800FE935E /* Pokemon Presentaion */,
 				9B09778F2947019C006F3D76 /* PokemonDetail API */,
 			);
@@ -247,7 +247,7 @@
 			children = (
 				9BC134732945EBE400FE935E /* Pokemon.swift */,
 				9BC134762945F26400FE935E /* PokemonLoader.swift */,
-				9BC1349B2946118900FE935E /* Pokenmon API */,
+				9BC1349B2946118900FE935E /* Pokemon API */,
 			);
 			path = "Pokemon Feature";
 			sourceTree = "<group>";
@@ -270,21 +270,21 @@
 			path = "Shared API";
 			sourceTree = "<group>";
 		};
-		9BC1349A2946115C00FE935E /* Pokenmon API */ = {
+		9BC1349A2946115C00FE935E /* Pokemon API */ = {
 			isa = PBXGroup;
 			children = (
 				9BC134912945FE6900FE935E /* LoadPokemonFromRemoteUseCaseTests.swift */,
 			);
-			path = "Pokenmon API";
+			path = "Pokemon API";
 			sourceTree = "<group>";
 		};
-		9BC1349B2946118900FE935E /* Pokenmon API */ = {
+		9BC1349B2946118900FE935E /* Pokemon API */ = {
 			isa = PBXGroup;
 			children = (
 				9BC134932945FEEB00FE935E /* RemotePokemonLoader.swift */,
 				9BC13495294601D300FE935E /* PokemonMapper.swift */,
 			);
-			path = "Pokenmon API";
+			path = "Pokemon API";
 			sourceTree = "<group>";
 		};
 		9BC134A22946130C00FE935E /* Shared API Infra */ = {
